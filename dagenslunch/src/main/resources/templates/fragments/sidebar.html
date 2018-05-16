@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Header</title>
+</head>
+
+<body>
+
+<div th:fragment="sidebar">
+        <img src="/img/logo.png" alt="image" class="img-thumbnail">
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action active">
+                Menue
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">Restaurant</a>
+            <a href="#" class="list-group-item list-group-item-action">People</a>
+            <a href="#" class="list-group-item list-group-item-action">User</a>
+            <a href="#" class="list-group-item list-group-item-action disabled">Admin</a>
+        </div>
+
+</div>
+
+</body>
+
+</html>
