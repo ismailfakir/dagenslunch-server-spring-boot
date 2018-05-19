@@ -7,99 +7,95 @@
 
 <body>
 
-<div layout:fragment="content">
+<div layout:fragment="content" class="content">
 
-
-    <div class="card ">
-        <form class="mx-3 my-3" action="#" th:action="@{/addrestaurant}" th:object="${restaurant}" method="post">
-            <div class="form-group">
-                <label for="inputAddress">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="name">
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputEmail4">latitude</label>
-                    <input type="texts" class="form-control" id="latitude" placeholder="latitude">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header text-center text-uppercase h4 font-weight-light">
+                    Add new Restaurant
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="inputPassword4">longitude</label>
-                    <input type="text" class="form-control" id="longitude" placeholder="longitude">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputEmail4">Email</label>
-                    <input type="email" class="form-control" id="inputEma" placeholder="Email">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputPassword4">Password</label>
-                    <input type="password" class="form-control" id="inpPassword4" placeholder="Password">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputEmail4">Telephone</label>
-                    <input type="email" class="form-control" id="inputEmail4" placeholder="Telephone">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputPassword4">Opening Hours</label>
-                    <input type="password" class="form-control" id="inputPassword4" placeholder="Opening Hours">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputAddress">Address</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputCity">City</label>
-                    <input type="text" class="form-control" id="inputCity">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="inputState">State</label>
-                    <select id="inputState" class="form-control">
-                        <option selected>Choose...</option>
-                        <option>...</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="inputZip">Zip</label>
-                    <input type="text" class="form-control" id="inputZip">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-3">
-                    <label for="inputEmail4">Category</label>
-                    <input type="email" class="form-control" id="inpu" placeholder="Telephone">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="inputPassword4">Rating</label>
-                    <input type="password" class="form-control" id="inpuPasswo" placeholder="Opening Hours">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="inputPassword4">Active</label>
-                    <select id="inputStte" class="form-control">
-                        <option selected>True</option>
-                        <option>False</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="inputPassword4">Validaty date</label>
-                    <input type="password" class="form-control" id="inputPaswo" placeholder="Opening Hours">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
-                        Check me out
-                    </label>
+                <div class="card-body">
+                    <form class="mx-3 my-3" action="#" th:action="@{/addrestaurant}" th:object="${restaurant}" method="post">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="name" th:field="*{name}">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">latitude</label>
+                                <input type="texts" class="form-control" id="latitude" placeholder="latitude" th:field="*{latitude}">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">longitude</label>
+                                <input type="text" class="form-control" id="longitude" placeholder="longitude" th:field="*{longitude}">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Email</label>
+                                <input type="email" class="form-control" id="inputEma" placeholder="Email" th:field="*{email}">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">Password</label>
+                                <input type="password" class="form-control" id="inpPassword4" placeholder="Password" th:field="*{password}">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Telephone</label>
+                                <input type="text" class="form-control" id="inputEmail4" placeholder="Telephone" th:field="*{telephone}">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">Opening Hours</label>
+                                <input type="text" class="form-control" id="inputPassword4" placeholder="Opening Hours" th:field="*{openingHours}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress">Street</label>
+                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" th:field="*{street}">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputCity">City</label>
+                                <input type="text" class="form-control" id="inputCity" th:field="*{city}">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="inputZip">Post Code</label>
+                                <input type="text" class="form-control" id="inputZip" th:field="*{postCode}">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputCountry">Country</label>
+                                <input type="text" class="form-control" id="inputCountry" th:field="*{country}">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label for="inputEmail4">Category</label>
+                                <input type="text" class="form-control" id="inpu" placeholder="Telephone" th:field="*{category}">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="inputPassword4">Rating</label>
+                                <input type="text" class="form-control" id="inpuPasswo" placeholder="Opening Hours" th:field="*{rating}">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="inputPassword4">Active</label>
+                                <select id="inputStte" class="form-control" th:field="*{active}">
+                                    <option selected value="true">True</option>
+                                    <option value="false">False</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="validityDate">Validaty date</label>
+                                <input type="text" class="form-control" id="validityDate" placeholder="validity Date" th:field="*{validityDate}">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Restaurant</button>
+                    </form>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Add Restaurant</button>
-        </form>
+        </div>
     </div>
-
 </div>
 
 </body>
