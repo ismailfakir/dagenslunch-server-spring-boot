@@ -21,10 +21,22 @@ public class WebController {
         return "index";
     }
 
+    @GetMapping(value = "/tables")
+    public String forms(Model model) {
+        model.addAttribute("restaurantList",restaurantService.getAllRestaurant());
+        return "tables";
+    }
+
     @GetMapping(value = "/home")
     public String home(Model model) {
         model.addAttribute("restaurantList",restaurantService.getAllRestaurant());
         return "home";
+    }
+
+    @GetMapping(value = "/restaurantlist")
+    public String restaurantList(Model model) {
+        model.addAttribute("restaurantList",restaurantService.getAllRestaurant());
+        return "restaurantlist";
     }
 
     @GetMapping(value = "/addrestaurant")

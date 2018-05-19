@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/layout">
+
+<head>
+    <title>Layout</title>
+</head>
+
+<body>
+
+<div layout:fragment="content" class="content">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-light">
+                    Restaurant List
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered table-striped">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Latitude</th>
+                                <th scope="col">Longitude</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Opening Hours</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="restaurant : ${restaurantList}">
+                                <td th:text="${restaurant.name}"></td>
+                                <td th:text="${restaurant.latitude}"></td>
+                                <td th:text="${restaurant.longitude}"></td>
+                                <td th:text="${restaurant.street}+ ' ' +${restaurant.postCode}+ ' ' +${restaurant.city}"></td>
+                                <td th:text="${restaurant.openingHours}"></td>
+                                <td>
+                                    <!--<a href="/notesEdit/1" th:href="@{/notesEdit/__${restaurant.id}__}">Edit</a>
+                                    <a href="/notesDelete/1" th:href="@{/notesDelete/__${restaurant.id}__}">Delete</a>-->
+                                    <a href="/editrestaurant" class="btn btn-success active" role="button" aria-pressed="true"><i class="fa fa-cut"></i>&nbsp;Edit</a>
+                                    <a href="/deleterestaurant" class="btn btn-danger active" role="button" aria-pressed="true"><i class="fa fa-trash"></i>&nbsp;Delete</a>
+                                    <!--<button type="button" class="btn btn-success">
+                                        <i class="fa fa-cut"></i>&nbsp; EDIT
+                                    </button>
+                                    <button type="button" class="btn btn-danger">
+                                        <i class="fa fa-trash"></i> &nbsp; DELETE
+                                    </button>-->
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
