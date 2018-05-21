@@ -2,6 +2,7 @@ package net.cloudcentrik.dagenslunch.web;
 
 import net.cloudcentrik.dagenslunch.restaurant.Restaurant;
 import net.cloudcentrik.dagenslunch.restaurant.RestaurantService;
+import net.cloudcentrik.dagenslunch.user.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +24,31 @@ public class WebController implements ErrorController {
     @Autowired
     RestaurantService restaurantService;
 
-    @GetMapping(value = "/")
+    @GetMapping(value= "/")
     public String index(Model model) {
-        return "index";
+        return "redirect:login";
     }
 
+    @GetMapping(value = "/login")
+    public String login(Model model,User user) {
+        model.addAttribute("user",user);
+        return "login";
+    }
+
+    @GetMapping(value = "/dashboard")
+    public String dashboard(Model model) {
+        return "dashboard";
+    }
+
+    @PostMapping(value= "/login")
+    public String login(@ModelAttribute User user) {
+        if(user.getEmail().equals("info@cloudcentrik.net")&&user.getPassword().equals("test")){
+            return "redirect:dashboard";
+        }else{
+            return "redirect:login";
+        }
+
+    }
 
     @GetMapping(value = "/restaurantlist")
     public String restaurantList(Model model) {
@@ -43,7 +64,7 @@ public class WebController implements ErrorController {
 
     @PostMapping(value= "/addrestaurant")
     public String addRestaurant(@ModelAttribute Restaurant restaurant) {
-        log.info(restaurant.getName());
+        //log.info(restaurant.getName());
         restaurantService.saveRestaurant(restaurant);
         return "redirect:restaurantlist";
     }

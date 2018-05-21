@@ -19,26 +19,26 @@
                     <form class="mx-3 my-3" action="#" th:action="@{/addrestaurant}" th:object="${restaurant}" method="post">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="name" th:field="*{name}">
+                            <input type="text" class="form-control" id="name" placeholder="Name" th:field="*{name}">
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="inputEmail4">latitude</label>
-                                <input type="texts" class="form-control" id="latitude" placeholder="latitude" th:field="*{latitude}">
+                                <label for="latitude">Latitude</label>
+                                <input type="text" class="form-control" id="latitude" placeholder="Latitude" th:field="*{latitude}">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputPassword4">longitude</label>
-                                <input type="text" class="form-control" id="longitude" placeholder="longitude" th:field="*{longitude}">
+                                <label for="longitude">Longitude</label>
+                                <input type="text" class="form-control" id="longitude" placeholder="Longitude" th:field="*{longitude}">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="inputEmail4">Email</label>
-                                <input type="email" class="form-control" id="inputEma" placeholder="Email" th:field="*{email}">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Email" th:field="*{email}">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputPassword4">Password</label>
-                                <input type="password" class="form-control" id="inpPassword4" placeholder="Password" th:field="*{password}">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Password" th:field="*{password}">
                             </div>
                         </div>
                         <div class="form-row">
@@ -56,11 +56,11 @@
                             <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" th:field="*{street}">
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
                                 <label for="inputCity">City</label>
                                 <input type="text" class="form-control" id="inputCity" th:field="*{city}">
                             </div>
-                            <div class="form-group col-md-2">
+                            <div class="form-group col-md-4">
                                 <label for="inputZip">Post Code</label>
                                 <input type="text" class="form-control" id="inputZip" th:field="*{postCode}">
                             </div>
