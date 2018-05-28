@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.reactive.StaticResourceRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configurers.provisioning.InMemoryUserDetailsManagerConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
@@ -21,12 +23,25 @@ public class DagenslunchBasicSecurityConfiguration extends WebSecurityConfigurer
     @Autowired
     private DagenslunchBasicAuthenticationEntryPoint authEntryPoint;
 
+    private static final String[] AUTH_WHITELIST = {
+            // -- swagger ui
+            "/swagger-resources/**",
+            "/swagger-ui.html",
+            "/v2/api-docs",
+            "/webjars/**",
+            // other public endpoints of your API may be appended to this array
+            "/web/**"
+    };
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
 
+        http.authorizeRequests().antMatchers(AUTH_WHITELIST).permitAll()
+                .anyRequest().authenticated();
+
         // All requests send to the Web Server request must be authenticated
-        http.authorizeRequests().anyRequest().authenticated();
+        //http.authorizeRequests().anyRequest().authenticated();
 
         // Use AuthenticationEntryPoint to authenticate user/password
         http.httpBasic().authenticationEntryPoint(authEntryPoint);

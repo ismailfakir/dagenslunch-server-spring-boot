@@ -1,5 +1,6 @@
 package net.cloudcentrik.dagenslunch.web;
 
+import net.cloudcentrik.dagenslunch.email.EmailService;
 import net.cloudcentrik.dagenslunch.restaurant.Restaurant;
 import net.cloudcentrik.dagenslunch.restaurant.RestaurantService;
 import net.cloudcentrik.dagenslunch.user.User;
@@ -24,24 +25,32 @@ public class WebController implements ErrorController {
     @Autowired
     RestaurantService restaurantService;
 
+    @Autowired
+    EmailService emailService;
+
     @GetMapping(value= "/")
     public String index(Model model) {
+        //emailService.sendEmail();
+        log.info("Accessed /");
         return "redirect:login";
     }
 
     @GetMapping(value = "/login")
     public String login(Model model,User user) {
         model.addAttribute("user",user);
+        log.info("Accessed /login");
         return "login";
     }
 
     @GetMapping(value = "/dashboard")
     public String dashboard(Model model) {
+        log.info("Accessed /dashboard");
         return "dashboard";
     }
 
     @PostMapping(value= "/login")
     public String login(@ModelAttribute User user) {
+        log.info("Accessed POST /login");
         if(user.getEmail().equals("info@cloudcentrik.net")&&user.getPassword().equals("test")){
             return "redirect:dashboard";
         }else{

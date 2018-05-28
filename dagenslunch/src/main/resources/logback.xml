@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <withJansi>true</withJansi>
         <encoder>
-            <pattern>%d{yy-MMMM-dd HH:mm:ss:SSS} %5p %t %c{2}:%L - %m%n</pattern>
+            <!--<pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger{36}.%M - %msg%n</pattern>-->
+            <pattern>%red(%d{yy-MMMM-dd HH:mm:ss:SSS}) %boldGreen(%5p) %yellow(%t) %magenta(%c{2}:%L) - %blue(%m%n)</pattern>
         </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+    </appender>
+    <appender name="fileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${user.home}/logs/dagenslunch-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- keep 90 days' worth of history -->
+            <maxHistory>90</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <Pattern>.%d{HH:mm:ss.SSS} [%thread] [user="%X{user}" token="%X{token}"] %-5level %logger{36} - %msg %n
+            </Pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
     </appender>
     <root level="INFO">
-        <appender-ref ref="stdout"/>
+        <appender-ref ref="consoleAppender" />
+        <appender-ref ref="fileAppender" />
     </root>
 </configuration>

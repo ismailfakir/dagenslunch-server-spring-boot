@@ -1,3 +1,4 @@
+/*
 package net.cloudcentrik.dagenslunch.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,12 @@ import java.util.Properties;
 @EnableTransactionManagement
 public class DatabaseConfiguration {
 
-    /**
+    */
+/**
      * DataSource definition for database connection. Settings are read from
      * the application.properties file (using the env object).
-     */
+     *//*
+
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -34,9 +37,11 @@ public class DatabaseConfiguration {
         return dataSource;
     }
 
-    /**
+    */
+/**
      * Declare the JPA entity manager factory.
-     */
+     *//*
+
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactory =
@@ -68,9 +73,11 @@ public class DatabaseConfiguration {
         return entityManagerFactory;
     }
 
-    /**
+    */
+/**
      * Declare the transaction manager.
-     */
+     *//*
+
     @Bean
     public JpaTransactionManager transactionManager() {
         JpaTransactionManager transactionManager =
@@ -80,13 +87,15 @@ public class DatabaseConfiguration {
         return transactionManager;
     }
 
-    /**
+    */
+/**
      * PersistenceExceptionTranslationPostProcessor is a bean post processor
      * which adds an advisor to any bean annotated with Repository so that any
      * platform-specific exceptions are caught and then rethrown as one
      * Spring's unchecked data access exceptions (i.e. a subclass of
      * DataAccessException).
-     */
+     *//*
+
     @Bean
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
         return new PersistenceExceptionTranslationPostProcessor();
@@ -103,4 +112,4 @@ public class DatabaseConfiguration {
     @Autowired
     private LocalContainerEntityManagerFactoryBean entityManagerFactory;
 
-}
+}*/

@@ -1,6 +1,5 @@
 package net.cloudcentrik.dagenslunch;
 
-import net.cloudcentrik.dagenslunch.configuration.DatabaseConfiguration;
 import net.cloudcentrik.dagenslunch.restaurant.RestaurantDataRestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.*;
